@@ -1,5 +1,6 @@
 package com.example.danielkwok.fingerpainter;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +22,24 @@ public class MainActivity extends AppCompatActivity {
 
         myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
         main_color_iv = findViewById(R.id.main_color_iv);
-        main_color_iv.setOnClickListener((v)-> Utils.printToast(getApplicationContext(),"Colour wheel clicked"));
+        main_color_iv.setOnClickListener((v)->
+            selectColor()
+        );
 
         main_brush_iv = findViewById(R.id.main_brush_iv);
-        main_brush_iv.setOnClickListener((v)->Utils.printToast(getApplicationContext(),"Brush clicked"));
+        main_brush_iv.setOnClickListener((v)->
+            selectBrush()
+        );
+    }
 
+    private void selectColor(){
+        Utils.printToast(getApplicationContext(),"Colour wheel clicked");
+        Intent intent = new Intent(this, ColourPicker.class);
+        startActivity(intent);
+
+    }
+
+    private void selectBrush(){
+        Utils.printToast(getApplicationContext(),"Brush clicked");
     }
 }
