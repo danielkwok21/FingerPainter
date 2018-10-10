@@ -170,16 +170,4 @@
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color5_iv"
         app:srcCompat="@color/white" />
 
-    <Button
-        android:id="@+id/colour_picker_back_btn"
-        android:layout_width="66dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

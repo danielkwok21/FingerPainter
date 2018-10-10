@@ -22,7 +22,6 @@ import com.skydoves.colorpickerview.listeners.ColorListener;
 public class ColourPicker extends AppCompatActivity {
     private ColorPickerView colorPickerView;
     private int currentColour = Color.BLACK;
-    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +36,15 @@ public class ColourPicker extends AppCompatActivity {
                 Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
             }
         });
-
-        back = findViewById(R.id.colour_picker_back_btn);
-        back.setOnClickListener((v)->{
-            Intent intent = new Intent(ColourPicker.this, MainActivity.class);
-            startActivity(intent);
-        });
     }
 
     public void pickColour(View v){
         //currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
         Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
+
+        Intent intent = new Intent();
+        intent.putExtra("pickedColour", currentColour);
+        setResult(1, intent);
+        finish();
     }
 }
