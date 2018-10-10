@@ -1,7 +1,15 @@
 package com.example.danielkwok.fingerpainter;
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.danielkwok.fingerpainter.Utils.Utils;
@@ -9,7 +17,8 @@ import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 
 public class ColourPicker extends AppCompatActivity {
-    ColorPickerView colorPickerView;
+    private ColorPickerView colorPickerView;
+    private int currentColour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +29,15 @@ public class ColourPicker extends AppCompatActivity {
         colorPickerView.setColorListener(new ColorListener() {
             @Override
             public void onColorSelected(int color, boolean fromUser) {
-                Utils.printToast(getApplicationContext(), Integer.toString(color));
+                currentColour = color;
+                Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
             }
         });
     }
+
+    public void pickColour(View v){
+        currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
+        Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
+    }
+
 }

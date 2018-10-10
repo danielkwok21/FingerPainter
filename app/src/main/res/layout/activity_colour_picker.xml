@@ -21,61 +21,73 @@
 
     <ImageView
         android:id="@+id/colour_picker_color1_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@color/black" />
+        app:srcCompat="@color/white" />
 
     <ImageView
         android:id="@+id/colour_picker_color2_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color1_iv"
         app:srcCompat="@color/white" />
 
     <ImageView
         android:id="@+id/colour_picker_color3_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color2_iv"
         app:srcCompat="@color/red" />
 
     <ImageView
         android:id="@+id/colour_picker_color4_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color3_iv"
         app:srcCompat="@color/orange" />
 
     <ImageView
         android:id="@+id/colour_picker_color5_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color4_iv"
         app:srcCompat="@color/yellow" />
 
     <ImageView
         android:id="@+id/colour_picker_color6_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="68dp"
+        android:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color5_iv"
@@ -83,40 +95,48 @@
 
     <ImageView
         android:id="@+id/colour_picker_color7_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@color/blue" />
 
     <ImageView
         android:id="@+id/colour_picker_color8_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/darkblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color1_iv"
         app:srcCompat="@color/darkblue" />
 
     <ImageView
         android:id="@+id/colour_picker_color9_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color2_iv"
         app:srcCompat="@color/purple" />
 
     <ImageView
         android:id="@+id/colour_picker_color10_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color3_iv"
         app:srcCompat="@color/white" />
@@ -124,21 +144,25 @@
 
     <ImageView
         android:id="@+id/colour_picker_color11_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color4_iv"
         app:srcCompat="@color/white" />
 
     <ImageView
         android:id="@+id/colour_picker_color12_iv"
+        android:onClick="pickColour"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colour_picker_color5_iv"
