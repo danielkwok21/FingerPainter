@@ -20,7 +20,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            myFingerPainterView.setColour(extras.getInt("colour"));
+        }
+
         myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
+
         main_color_iv = findViewById(R.id.main_color_iv);
         main_color_iv.setOnClickListener((v)->
             selectColor()
@@ -36,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.printToast(getApplicationContext(),"Color wheel clicked");
         Intent intent = new Intent(this, ColourPicker.class);
         startActivity(intent);
+
     }
 
     private void selectBrush(){
