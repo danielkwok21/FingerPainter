@@ -16,12 +16,12 @@ public class ColourPicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
+        colorPickerView = findViewById(R.id.colorPickerView);
         colorPickerView.setColorListener(new ColorListener() {
             @Override
             public void onColorSelected(int color, boolean fromUser) {
-                Utils.printToast(getApplicationContext(), "Color picked");
+                Utils.printToast(getApplicationContext(), Integer.toString(color));
             }
-
         });
     }
 }

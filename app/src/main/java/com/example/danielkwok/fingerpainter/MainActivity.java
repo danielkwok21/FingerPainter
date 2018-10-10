@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selectColor(){
-        Utils.printToast(getApplicationContext(),"Colour wheel clicked");
+        Utils.printToast(getApplicationContext(),"Color wheel clicked");
         Intent intent = new Intent(this, ColourPicker.class);
         startActivity(intent);
-
     }
 
     private void selectBrush(){

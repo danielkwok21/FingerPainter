@@ -8,9 +8,140 @@
 
     <com.skydoves.colorpickerview.ColorPickerView
         android:id="@+id/colorPickerView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="279dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:palette="@drawable/palette"
         app:selector="@drawable/wheel" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color1_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@color/black" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color2_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color1_iv"
+        app:srcCompat="@color/white" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color3_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color2_iv"
+        app:srcCompat="@color/red" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color4_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color3_iv"
+        app:srcCompat="@color/orange" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color5_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color4_iv"
+        app:srcCompat="@color/yellow" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color6_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color5_iv"
+        app:srcCompat="@color/green" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color7_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@color/blue" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color8_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color1_iv"
+        app:srcCompat="@color/darkblue" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color9_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color2_iv"
+        app:srcCompat="@color/purple" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color10_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color3_iv"
+        app:srcCompat="@color/white" />
+
+
+    <ImageView
+        android:id="@+id/colour_picker_color11_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color4_iv"
+        app:srcCompat="@color/white" />
+
+    <ImageView
+        android:id="@+id/colour_picker_color12_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colour_picker_color5_iv"
+        app:srcCompat="@color/white" />
 
 </android.support.constraint.ConstraintLayout>
