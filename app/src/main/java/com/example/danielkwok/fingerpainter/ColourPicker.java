@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 
 public class ColourPicker extends AppCompatActivity {
+    private static final String TAG = "ColourPicker";
     private ColorPickerView colorPickerView;
     private int currentColour = Color.BLACK;
 
@@ -39,9 +41,9 @@ public class ColourPicker extends AppCompatActivity {
     }
 
     public void pickColour(View v){
-        //currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
-        Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
-
+        currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
+        //Utils.printToast(getApplicationContext(), Integer.toString(currentColour));
+        Log.d(TAG, "curentColour: "+currentColour);
         Intent intent = new Intent();
         intent.putExtra("pickedColour", currentColour);
         setResult(1, intent);

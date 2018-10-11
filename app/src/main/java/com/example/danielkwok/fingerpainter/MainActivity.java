@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selectColor(){
-        Utils.printToast(getApplicationContext(),"Color wheel clicked");
         Intent intent = new Intent(this, ColourPicker.class);
         startActivityForResult(intent, 1);
     }
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(data!=null && requestCode == 1){
             int pickedColour = data.getIntExtra("pickedColour", 1);
+            myFingerPainterView.setColour(pickedColour);
         }
     }
 
