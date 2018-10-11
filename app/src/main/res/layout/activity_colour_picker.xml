@@ -38,8 +38,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/black"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/white" />
 
         <ImageView
@@ -48,8 +47,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/white"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/white" />
 
         <ImageView
@@ -58,8 +56,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/red"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/red" />
 
         <ImageView
@@ -68,8 +65,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/orange"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/orange" />
 
         <ImageView
@@ -78,8 +74,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/yellow"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/yellow" />
 
         <ImageView
@@ -89,8 +84,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColour"
-            android:tint="@color/green"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/green" />
 
     </LinearLayout>
@@ -115,8 +109,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/blue"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/blue" />
 
         <ImageView
@@ -125,8 +118,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/darkblue"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/darkblue" />
 
         <ImageView
@@ -135,8 +127,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/purple"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/purple" />
 
         <ImageView
@@ -145,8 +136,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/white"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/white" />
 
 
@@ -156,8 +146,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/white"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/white" />
 
         <ImageView
@@ -167,10 +156,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColour"
-            android:tint="@color/white"
+            android:onClick="pickColourFromTile"
             app:srcCompat="@color/white" />
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>
