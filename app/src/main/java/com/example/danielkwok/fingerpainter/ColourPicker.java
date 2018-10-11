@@ -14,6 +14,9 @@ import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class ColourPicker extends AppCompatActivity {
     private static final String TAG = "ColourPicker";
@@ -25,43 +28,29 @@ public class ColourPicker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        int[] pickedColours ={
-                getResources().getColor(R.color.black),
-                getResources().getColor(R.color.white),
-                getResources().getColor(R.color.red),
-                getResources().getColor(R.color.orange),
-                getResources().getColor(R.color.yellow),
-                getResources().getColor(R.color.green),
-                getResources().getColor(R.color.blue),
-                getResources().getColor(R.color.darkblue),
-                getResources().getColor(R.color.purple),
-                getResources().getColor(R.color.white),
-                getResources().getColor(R.color.white),
-                getResources().getColor(R.color.white)
-        };
+        HashMap<Integer, Integer> colourTiles = new HashMap<>();
+        colourTiles.put(getResources().getColor(R.color.black), R.id.colour_picker_color1_iv);
+        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color2_iv);
+        colourTiles.put(getResources().getColor(R.color.red), R.id.colour_picker_color3_iv);
+        colourTiles.put(getResources().getColor(R.color.orange), R.id.colour_picker_color4_iv);
+        colourTiles.put(getResources().getColor(R.color.yellow), R.id.colour_picker_color5_iv);
+        colourTiles.put(getResources().getColor(R.color.green), R.id.colour_picker_color6_iv);
+        colourTiles.put(getResources().getColor(R.color.blue), R.id.colour_picker_color7_iv);
+        colourTiles.put(getResources().getColor(R.color.darkblue), R.id.colour_picker_color8_iv);
+        colourTiles.put(getResources().getColor(R.color.purple), R.id.colour_picker_color9_iv);
+        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color10_iv);
+        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color11_iv);
+        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color12_iv);
 
-        int[] pickedColourTiles = {
-                R.id.colour_picker_color1_iv,
-                R.id.colour_picker_color2_iv,
-                R.id.colour_picker_color3_iv,
-                R.id.colour_picker_color4_iv,
-                R.id.colour_picker_color5_iv,
-                R.id.colour_picker_color6_iv,
-                R.id.colour_picker_color7_iv,
-                R.id.colour_picker_color8_iv,
-                R.id.colour_picker_color9_iv,
-                R.id.colour_picker_color10_iv,
-                R.id.colour_picker_color11_iv,
-                R.id.colour_picker_color12_iv,
-        };
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
         //set tile colours
-        for(int i=0; i<pickedColourTiles.length; i++){
-            ImageView tile = findViewById(pickedColourTiles[i]);
-            tile.setColorFilter(pickedColours[i]);
+        Set set = colourTiles.entrySet();
+        Iterator itr = set.iterator();
+        while(itr.hasNext()){
+            //https://beginnersbook.com/2013/12/hashmap-in-java-with-example/
         }
 
         colorPickerView = findViewById(R.id.colorPickerView);
@@ -79,8 +68,9 @@ public class ColourPicker extends AppCompatActivity {
 
     }
 
-    public void pickColourFromTile(View v){
-        currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
+    public void pickColourFromTile(ImageView v){
+        //currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
+        currentColour = (int)v.getColorFilter();
         Log.d(TAG, "curentColour: "+currentColour);
         Intent intent = new Intent();
         intent.putExtra("pickedColour", currentColour);
