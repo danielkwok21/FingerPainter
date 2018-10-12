@@ -34,18 +34,7 @@ public class ColourPicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
-        pickedColours.add(getResources().getColor(R.color.black));
-        pickedColours.add(getResources().getColor(R.color.white));
-        pickedColours.add(getResources().getColor(R.color.red));
-        pickedColours.add(getResources().getColor(R.color.orange));
-        pickedColours.add(getResources().getColor(R.color.yellow));
-        pickedColours.add(getResources().getColor(R.color.green));
-        pickedColours.add(getResources().getColor(R.color.blue));
-        pickedColours.add(getResources().getColor(R.color.darkblue));
-        pickedColours.add(getResources().getColor(R.color.purple));
-        pickedColours.add(getResources().getColor(R.color.white));
-        pickedColours.add(getResources().getColor(R.color.white));
-        pickedColours.add(getResources().getColor(R.color.white));
+
 
         tileIds.add(R.id.colour_picker_color1_iv);
         tileIds.add(R.id.colour_picker_color2_iv);
@@ -67,9 +56,22 @@ public class ColourPicker extends AppCompatActivity {
             @Override
             public void onColorSelected(int color, boolean fromUser) {
                 currentColour = color;
-
+                updateTileColours();
+                if(fromUser){
+                    Log.d(TAG, "currentColour: "+currentColour);
+                    Intent intent = new Intent();
+                    intent.putExtra("pickedColour", currentColour);
+                    setResult(1, intent);
+                    finish();
+                }
             }
         });
+    }
+
+    private void updateTileColours(){
+        pickedColours.add(0, currentColour);
+        pickedColours.remove(11);
+        setTileColours();
     }
 
     private void setTileColours(){
@@ -79,9 +81,6 @@ public class ColourPicker extends AppCompatActivity {
         }
     }
 
-    public void pickColourFromWheel(){
-
-    }
 
     public void pickColourFromTile(View v){
         try{
