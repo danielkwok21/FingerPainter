@@ -18,16 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Bundle extras = getIntent().getExtras();
 
+        myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
         if (extras != null) {
-            myFingerPainterView.setColour(extras.getInt("colour"));
+            myFingerPainterView.setColour(extras.getInt("pickedColour"));
         }
 
-        myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
 
         main_color_iv = findViewById(R.id.main_color_iv);
         main_color_iv.setOnClickListener((v)->
@@ -42,16 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void selectColor(){
         Intent intent = new Intent(this, ColourPicker.class);
-        startActivityForResult(intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(data!=null && requestCode == 1){
-            int pickedColour = data.getIntExtra("pickedColour", 1);
-            myFingerPainterView.setColour(pickedColour);
-        }
+        startActivity(intent);
     }
 
     private void selectBrush(){

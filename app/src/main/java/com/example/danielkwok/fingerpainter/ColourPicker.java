@@ -34,7 +34,18 @@ public class ColourPicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
-
+        pickedColours.add(getResources().getColor(R.color.black));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.red));
+        pickedColours.add(getResources().getColor(R.color.orange));
+        pickedColours.add(getResources().getColor(R.color.yellow));
+        pickedColours.add(getResources().getColor(R.color.green));
+        pickedColours.add(getResources().getColor(R.color.blue));
+        pickedColours.add(getResources().getColor(R.color.darkblue));
+        pickedColours.add(getResources().getColor(R.color.purple));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
 
         tileIds.add(R.id.colour_picker_color1_iv);
         tileIds.add(R.id.colour_picker_color2_iv);
@@ -68,6 +79,20 @@ public class ColourPicker extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putIntegerArrayList("pickedColours", pickedColours);
+        outState.putIntegerArrayList("tileIds", tileIds);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        pickedColours = savedInstanceState.getIntegerArrayList("pickedColours");
+        tileIds = savedInstanceState.getIntegerArrayList("tileIds");
+    }
+
     private void updateTileColours(){
         pickedColours.add(0, currentColour);
         pickedColours.remove(11);
@@ -87,10 +112,9 @@ public class ColourPicker extends AppCompatActivity {
             int index = tileIds.indexOf(v.getId());
             currentColour = pickedColours.get(index);
             Log.d(TAG, "curentColour: "+currentColour);
-            Intent intent = new Intent();
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("pickedColour", currentColour);
-            setResult(1, intent);
-            finish();
+            startActivity(intent);
         }catch(Exception e){
             Log.d(TAG, "error: "+e);
         }
