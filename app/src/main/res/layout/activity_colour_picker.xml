@@ -34,6 +34,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color1_iv"
+            android:tag="0"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
@@ -43,6 +44,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color2_iv"
+            android:tag="1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -52,6 +54,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color3_iv"
+            android:tag="2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -61,6 +64,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color4_iv"
+            android:tag="3"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -70,6 +74,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color5_iv"
+            android:tag="4"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -79,6 +84,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color6_iv"
+            android:tag="5"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -105,6 +111,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color7_iv"
+            android:tag="6"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
@@ -114,6 +121,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color8_iv"
+            android:tag="7"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -123,6 +131,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color9_iv"
+            android:tag="8"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -132,6 +141,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color10_iv"
+            android:tag="9"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -142,6 +152,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color11_iv"
+            android:tag="10"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -151,6 +162,7 @@
 
         <ImageView
             android:id="@+id/colour_picker_color12_iv"
+            android:tag="11"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"

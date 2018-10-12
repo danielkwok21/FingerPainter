@@ -2,6 +2,7 @@ package com.example.danielkwok.fingerpainter;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.skydoves.colorpickerview.listeners.ColorListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class ColourPicker extends AppCompatActivity {
@@ -23,35 +25,42 @@ public class ColourPicker extends AppCompatActivity {
     private ColorPickerView colorPickerView;
     private int currentColour = Color.BLACK;
 
-
+    ArrayList<Integer> pickedColours = new ArrayList<>();
+    ArrayList<Integer> tileIds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        HashMap<Integer, Integer> colourTiles = new HashMap<>();
-        colourTiles.put(getResources().getColor(R.color.black), R.id.colour_picker_color1_iv);
-        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color2_iv);
-        colourTiles.put(getResources().getColor(R.color.red), R.id.colour_picker_color3_iv);
-        colourTiles.put(getResources().getColor(R.color.orange), R.id.colour_picker_color4_iv);
-        colourTiles.put(getResources().getColor(R.color.yellow), R.id.colour_picker_color5_iv);
-        colourTiles.put(getResources().getColor(R.color.green), R.id.colour_picker_color6_iv);
-        colourTiles.put(getResources().getColor(R.color.blue), R.id.colour_picker_color7_iv);
-        colourTiles.put(getResources().getColor(R.color.darkblue), R.id.colour_picker_color8_iv);
-        colourTiles.put(getResources().getColor(R.color.purple), R.id.colour_picker_color9_iv);
-        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color10_iv);
-        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color11_iv);
-        colourTiles.put(getResources().getColor(R.color.white), R.id.colour_picker_color12_iv);
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
-        //set tile colours
-        Set set = colourTiles.entrySet();
-        Iterator itr = set.iterator();
-        while(itr.hasNext()){
-            //https://beginnersbook.com/2013/12/hashmap-in-java-with-example/
-        }
+        pickedColours.add(getResources().getColor(R.color.black));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.red));
+        pickedColours.add(getResources().getColor(R.color.orange));
+        pickedColours.add(getResources().getColor(R.color.yellow));
+        pickedColours.add(getResources().getColor(R.color.green));
+        pickedColours.add(getResources().getColor(R.color.blue));
+        pickedColours.add(getResources().getColor(R.color.darkblue));
+        pickedColours.add(getResources().getColor(R.color.purple));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
+
+        tileIds.add(R.id.colour_picker_color1_iv);
+        tileIds.add(R.id.colour_picker_color2_iv);
+        tileIds.add(R.id.colour_picker_color3_iv);
+        tileIds.add(R.id.colour_picker_color4_iv);
+        tileIds.add(R.id.colour_picker_color5_iv);
+        tileIds.add(R.id.colour_picker_color6_iv);
+        tileIds.add(R.id.colour_picker_color7_iv);
+        tileIds.add(R.id.colour_picker_color8_iv);
+        tileIds.add(R.id.colour_picker_color9_iv);
+        tileIds.add(R.id.colour_picker_color10_iv);
+        tileIds.add(R.id.colour_picker_color11_iv);
+        tileIds.add(R.id.colour_picker_color12_iv);
+
+        setTileColours();
 
         colorPickerView = findViewById(R.id.colorPickerView);
         colorPickerView.setColorListener(new ColorListener() {
@@ -61,20 +70,30 @@ public class ColourPicker extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void setTileColours(){
+        for(int i=0; i<pickedColours.size(); i++){
+            ImageView tile = findViewById(tileIds.get(i));
+            tile.setColorFilter(pickedColours.get(i));
+        }
     }
 
     public void pickColourFromWheel(){
 
     }
 
-    public void pickColourFromTile(ImageView v){
-        //currentColour = ImageViewCompat.getImageTintList((ImageView)v).getDefaultColor();
-        currentColour = (int)v.getColorFilter();
-        Log.d(TAG, "curentColour: "+currentColour);
-        Intent intent = new Intent();
-        intent.putExtra("pickedColour", currentColour);
-        setResult(1, intent);
-        finish();
+    public void pickColourFromTile(View v){
+        try{
+            int index = tileIds.indexOf(v.getId());
+            currentColour = pickedColours.get(index);
+            Log.d(TAG, "curentColour: "+currentColour);
+            Intent intent = new Intent();
+            intent.putExtra("pickedColour", currentColour);
+            setResult(1, intent);
+            finish();
+        }catch(Exception e){
+            Log.d(TAG, "error: "+e);
+        }
     }
 }
