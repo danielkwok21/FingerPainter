@@ -1,6 +1,9 @@
 package com.example.danielkwok.fingerpainter.Activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import com.example.danielkwok.fingerpainter.R;
 import com.example.danielkwok.fingerpainter.Utils.Utils;
 import com.example.danielkwok.fingerpainter.Views.FingerPainterView;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 public class MainActivity extends AppCompatActivity {
     private static final int SELECT_PIC = 1;
@@ -68,7 +72,23 @@ public class MainActivity extends AppCompatActivity {
             switch(requestCode){
                 case SELECT_PIC:
                     Uri uri = data.getData();
-                    Picasso.get().load(uri).into(main_image_iv);
+                    Picasso.get().load(uri).into(new Target() {
+                        @Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                            //
+                        }
+
+                        @Override
+                        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                            //
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+                            //
+                        }
+                    });
+
                     break;
                 case SELECT_COLOUR:
                     int pickedColour = data.getIntExtra("pickedColour", 1);
