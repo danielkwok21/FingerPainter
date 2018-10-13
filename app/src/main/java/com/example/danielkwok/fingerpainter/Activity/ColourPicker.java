@@ -1,29 +1,20 @@
-package com.example.danielkwok.fingerpainter;
+package com.example.danielkwok.fingerpainter.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
-import android.os.PersistableBundle;
-import android.support.v4.app.NavUtils;
-import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.danielkwok.fingerpainter.Utils.Utils;
+import com.example.danielkwok.fingerpainter.R;
 import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class ColourPicker extends AppCompatActivity {
     private static final String TAG = "ColourPicker";
@@ -51,6 +42,7 @@ public class ColourPicker extends AppCompatActivity {
             tileIds = new ArrayList<>();
 
             pickedColours.add(getResources().getColor(R.color.black));
+            pickedColours.add(getResources().getColor(R.color.grey));
             pickedColours.add(getResources().getColor(R.color.white));
             pickedColours.add(getResources().getColor(R.color.red));
             pickedColours.add(getResources().getColor(R.color.orange));
@@ -59,9 +51,8 @@ public class ColourPicker extends AppCompatActivity {
             pickedColours.add(getResources().getColor(R.color.blue));
             pickedColours.add(getResources().getColor(R.color.darkblue));
             pickedColours.add(getResources().getColor(R.color.purple));
-            pickedColours.add(getResources().getColor(R.color.white));
-            pickedColours.add(getResources().getColor(R.color.white));
-            pickedColours.add(getResources().getColor(R.color.white));
+            pickedColours.add(getResources().getColor(R.color.pink));
+            pickedColours.add(getResources().getColor(R.color.brown));
 
             tileIds.add(R.id.colour_picker_color1_iv);
             tileIds.add(R.id.colour_picker_color2_iv);
@@ -93,9 +84,7 @@ public class ColourPicker extends AppCompatActivity {
             public void onColorSelected(int color, boolean fromUser) {
                 if(fromUser){
                     currentColour = color;
-                    colour_picker_displayColour_iv.setColorFilter(currentColour);
-                    String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
-                    colour_picker_hexCode_tv.setText(colourHex);
+                    setColourDisplay();
                 }
             }
         });
@@ -110,18 +99,6 @@ public class ColourPicker extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        updateTileColours();
-    }
-
-    private void updateTileColours(){
-        pickedColours.add(0, currentColour);
-        pickedColours.subList(10, 11).clear();
-        setTileColours();
-    }
-
     private void setTileColours(){
         for(int i=0; i<pickedColours.size(); i++){
             ImageView tile = findViewById(tileIds.get(i));
@@ -129,11 +106,17 @@ public class ColourPicker extends AppCompatActivity {
         }
     }
 
+    private void setColourDisplay(){
+        colour_picker_displayColour_iv.setColorFilter(currentColour);
+        String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
+        colour_picker_hexCode_tv.setText(colourHex);
+    }
+
     public void pickColourFromTile(View v){
         try{
             int index = tileIds.indexOf(v.getId());
             currentColour = pickedColours.get(index);
-            Log.d(TAG, "curentColour: "+currentColour);
+            setColourDisplay();
         }catch(Exception e){
             Log.d(TAG, "error: "+e);
         }
