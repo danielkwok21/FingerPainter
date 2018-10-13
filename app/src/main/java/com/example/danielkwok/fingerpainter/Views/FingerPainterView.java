@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.danielkwok.fingerpainter.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -50,6 +52,7 @@ public class FingerPainterView extends View {
 
     public FingerPainterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setBackgroundColor(Color.parseColor("#FFFF00"));
         init(context);
     }
 
