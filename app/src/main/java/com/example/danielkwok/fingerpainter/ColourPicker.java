@@ -34,7 +34,18 @@ public class ColourPicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
-
+        pickedColours.add(getResources().getColor(R.color.black));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.red));
+        pickedColours.add(getResources().getColor(R.color.orange));
+        pickedColours.add(getResources().getColor(R.color.yellow));
+        pickedColours.add(getResources().getColor(R.color.green));
+        pickedColours.add(getResources().getColor(R.color.blue));
+        pickedColours.add(getResources().getColor(R.color.darkblue));
+        pickedColours.add(getResources().getColor(R.color.purple));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
+        pickedColours.add(getResources().getColor(R.color.white));
 
         tileIds.add(R.id.colour_picker_color1_iv);
         tileIds.add(R.id.colour_picker_color2_iv);
@@ -56,8 +67,9 @@ public class ColourPicker extends AppCompatActivity {
             @Override
             public void onColorSelected(int color, boolean fromUser) {
                 currentColour = color;
-                updateTileColours();
+                setTileColours();
                 if(fromUser){
+                    updateTileColours();
                     Log.d(TAG, "currentColour: "+currentColour);
                     Intent intent = new Intent();
                     intent.putExtra("pickedColour", currentColour);
