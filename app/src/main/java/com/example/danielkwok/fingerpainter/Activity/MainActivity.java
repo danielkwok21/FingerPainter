@@ -64,13 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void selectColor(){
         Intent intent = new Intent(this, ColourPicker.class);
+        intent.putExtra("defaultColour", myFingerPainterView.getColour());
         startActivityForResult(intent, SELECT_COLOUR);
     }
 
     private void selectBrush(){
         Intent intent = new Intent(this, BrushPicker.class);
-        intent.putExtra("defaultSize", 20);
-        intent.putExtra("defaultBrush", "Round");
+        intent.putExtra("defaultSize", myFingerPainterView.getBrushWidth());
+        intent.putExtra("defaultBrush", myFingerPainterView.getBrush().toString());
         startActivityForResult(intent, SELECT_BRUSH);
     }
 

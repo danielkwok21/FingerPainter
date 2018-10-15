@@ -17,18 +17,21 @@ public class BrushPicker extends AppCompatActivity {
     ImageView buttBrush;
     ImageView roundBrush;
     ImageView squareBrush;
-    ImageView previewSize;
+    ImageView previewBrushSize;
     SeekBar brushSizeSeekBar;
     TextView brushSizeText;
     ImageView increaseBrushSize;
     ImageView decreaseBrushSize;
     TextView brushType;
 
-    int defaultSize = 20;
-    String defaultBrush = "Round";
-    final int MAX_SIZE = 200;
-    int currentSize = defaultSize;
-    String currentBrush = defaultBrush;
+    private static final String BUTT = "BUTT";
+    private static final String ROUND = "ROUND";
+    private static final String SQUARE = "SQUARE";
+    private int defaultSize = 10;
+    private String defaultBrush = ROUND;
+    private final int MAX_SIZE = 200;
+    private int currentSize;
+    private String currentBrush;
 
 
     @Override
@@ -38,15 +41,19 @@ public class BrushPicker extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        //setting default values
         if (intent != null) {
             defaultSize = intent.getIntExtra("defaultSize", 1);
             defaultBrush = intent.getStringExtra("defaultBrush");
         }
 
+        currentSize = defaultSize;
+        currentBrush = defaultBrush;
+
         buttBrush = findViewById(R.id.brush_picker_buttBrush_iv);
         roundBrush = findViewById(R.id.brush_picker_roundBrush_iv);
         squareBrush = findViewById(R.id.brush_picker_squareBrush_iv);
-        previewSize = findViewById(R.id.brush_picker_size_iv);
+        previewBrushSize = findViewById(R.id.brush_picker_size_iv);
         brushSizeSeekBar = findViewById(R.id.brush_picker_sizeBar_iv);
         brushSizeText = findViewById(R.id.brush_picker_size_tv);
         increaseBrushSize = findViewById(R.id.brush_picker_size_dec_iv);
@@ -54,18 +61,22 @@ public class BrushPicker extends AppCompatActivity {
         brushType = findViewById(R.id.brush_picker_brush_tv);
 
         buttBrush.setOnClickListener((v)->{
-            setBrush("BUTT");
+            setBrush(BUTT);
         });
 
         roundBrush.setOnClickListener((v)->{
-            setBrush("ROUND");
+            setBrush(ROUND);
         });
 
         squareBrush.setOnClickListener((v)->{
-            setBrush("SQUARE");
+            setBrush(SQUARE);
         });
 
+        previewBrushSize.getLayoutParams().height = currentSize;
+        previewBrushSize.getLayoutParams().width = currentSize;
+
         brushSizeSeekBar.setMax(MAX_SIZE);
+        brushSizeSeekBar.setProgress(currentSize);
         brushSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -114,9 +125,9 @@ public class BrushPicker extends AppCompatActivity {
 
     private void setBrushSize(int size){
         currentSize = size;
-        previewSize.getLayoutParams().height = currentSize +20;
-        previewSize.getLayoutParams().width = currentSize +20;
-        previewSize.requestLayout();
+        previewBrushSize.getLayoutParams().height = currentSize;
+        previewBrushSize.getLayoutParams().width = currentSize;
+        previewBrushSize.requestLayout();
 
         brushSizeText.setText(Integer.toString(currentSize));
     }
@@ -131,4 +142,17 @@ public class BrushPicker extends AppCompatActivity {
         setBrushSize(currentSize);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentSize", currentSize);
+        outState.putString("currentBrush", currentBrush);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentSize = savedInstanceState.getInt("currentSize");
+        currentBrush = savedInstanceState.getString("currentBrush");
+    }
 }

@@ -64,7 +64,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="0"
             app:srcCompat="@color/white" />
 
@@ -74,7 +74,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="1"
             app:srcCompat="@color/white" />
 
@@ -84,7 +84,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="2"
             app:srcCompat="@color/red" />
 
@@ -94,7 +94,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="3"
             app:srcCompat="@color/orange" />
 
@@ -104,7 +104,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="4"
             app:srcCompat="@color/yellow" />
 
@@ -115,7 +115,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="132dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="5"
             app:srcCompat="@color/green" />
 
@@ -142,7 +142,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="6"
             app:srcCompat="@color/blue" />
 
@@ -152,7 +152,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="7"
             app:srcCompat="@color/darkblue" />
 
@@ -162,7 +162,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="8"
             app:srcCompat="@color/purple" />
 
@@ -172,7 +172,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="9"
             app:srcCompat="@color/white" />
 
@@ -183,7 +183,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="10"
             app:srcCompat="@color/white" />
 
@@ -194,7 +194,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="76dp"
-            android:onClick="pickColourFromTile"
+            android:onClick="selectColourFromTile"
             android:tag="11"
             app:srcCompat="@color/white" />
     </LinearLayout>
