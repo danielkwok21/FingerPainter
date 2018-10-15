@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import com.example.danielkwok.fingerpainter.R;
 import com.example.danielkwok.fingerpainter.Utils.Utils;
@@ -16,11 +18,12 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     private static final int SELECT_PIC = 1;
     private static final int SELECT_COLOUR = 2;
     private FingerPainterView myFingerPainterView;
 
-    private ImageView main_image_iv;
     private ImageView main_gallery_iv;
     private ImageView main_color_iv;
     private ImageView main_brush_iv;
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
-        main_image_iv = findViewById(R.id.main_image_iv);
 
         main_gallery_iv = findViewById(R.id.main_gallery_iv);
         main_gallery_iv.setOnClickListener((v)->{
@@ -72,22 +74,12 @@ public class MainActivity extends AppCompatActivity {
             switch(requestCode){
                 case SELECT_PIC:
                     Uri uri = data.getData();
-                    Picasso.get().load(uri).into(new Target() {
-                        @Override
-                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                            //
-                        }
-
-                        @Override
-                        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-                            //
-                        }
-
-                        @Override
-                        public void onPrepareLoad(Drawable placeHolderDrawable) {
-                            //
-                        }
-                    });
+                    try{
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        myFingerPainterView.setImageBackground(bitmap);
+                    }catch(Exception e){
+                        Log.d(TAG, "URI not available");
+                    }
 
                     break;
                 case SELECT_COLOUR:

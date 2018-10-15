@@ -40,6 +40,7 @@ public class FingerPainterView extends View {
     private Bitmap bitmap;
     private Path path;
     private Uri uri;
+    private Bitmap imageBitmap;
 
     public FingerPainterView(Context context) {
         super(context); // application context
@@ -143,11 +144,22 @@ public class FingerPainterView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // canvas is white with a bitmap with alpha channel drawn over the top
-        canvas.drawColor(Color.WHITE);
+
+        if(imageBitmap!=null){
+            canvas.drawBitmap(imageBitmap, 0,0, null);
+        }else{
+            // canvas is white with a bitmap with alpha channel drawn over the top
+            canvas.drawColor(Color.WHITE);
+        }
         canvas.drawBitmap(bitmap, 0, 0, paint);
         // show current drawing path
         canvas.drawPath(path, paint);
+
+
+    }
+
+    public void setImageBackground(Bitmap bitmap){
+        this.imageBitmap = bitmap;
     }
 
     @Override
