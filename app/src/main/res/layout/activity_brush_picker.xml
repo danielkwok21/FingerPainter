@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.BrushPicker">
+
+    <ImageView
+        android:id="@+id/brush_picker_buttBrush_iv"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/butt" />
+
+    <ImageView
+        android:id="@+id/brush_picker_roundBrush_iv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/brush_picker_buttBrush_iv"
+        app:layout_constraintStart_toEndOf="@+id/brush_picker_squareBrush_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/round" />
+
+    <ImageView
+        android:id="@+id/brush_picker_squareBrush_iv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/square" />
+
+
+    <SeekBar
+        android:id="@+id/brush_picker_sizeBar_iv"
+        android:layout_width="260dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brush_picker_roundBrush_iv" />
+
+    <ImageView
+        android:id="@+id/brush_picker_size_iv"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/brush_picker_sizeBar_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brush_picker_roundBrush_iv"
+        app:srcCompat="@drawable/brushSize" />
+
+</android.support.constraint.ConstraintLayout>

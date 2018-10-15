@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import com.example.danielkwok.fingerpainter.R;
 import com.example.danielkwok.fingerpainter.Utils.Utils;
 import com.example.danielkwok.fingerpainter.Views.FingerPainterView;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -91,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selectBrush(){
-        Utils.printToast(getApplicationContext(),"Brush clicked");
+        Intent intent = new Intent(this, BrushPicker.class);
+        startActivityForResult(intent, SELECT_COLOUR);
     }
 }

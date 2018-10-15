@@ -163,11 +163,6 @@ public class FingerPainterView extends View {
     }
 
     @Override
-    public void setBackground(Drawable background) {
-        super.setBackground(background);
-    }
-
-    @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         // called after the activity has been created when the view is inflated
         if(bitmap==null) {

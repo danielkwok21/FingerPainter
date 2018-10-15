@@ -17,9 +17,9 @@
         </activity>
         <activity
             android:name=".Activity.ColourPicker"
-            android:parentActivityName=".Activity.MainActivity">
-
-        </activity>
+            android:parentActivityName=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.BrushPicker"
+            android:parentActivityName=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>
