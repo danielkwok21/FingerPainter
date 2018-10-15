@@ -2,6 +2,7 @@ package com.example.danielkwok.fingerpainter.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int SELECT_PIC = 1;
     private static final int SELECT_COLOUR = 2;
+    private static final int SELECT_BRUSH = 3;
     private FingerPainterView myFingerPainterView;
 
     private ImageView main_gallery_iv;
@@ -65,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, SELECT_COLOUR);
     }
 
+    private void selectBrush(){
+        Intent intent = new Intent(this, BrushPicker.class);
+        intent.putExtra("defaultSize", 20);
+        intent.putExtra("defaultBrush", "Round");
+        startActivityForResult(intent, SELECT_BRUSH);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -84,12 +93,13 @@ public class MainActivity extends AppCompatActivity {
                     int pickedColour = data.getIntExtra("pickedColour", 1);
                     myFingerPainterView.setColour(pickedColour);
                     break;
+
+                case SELECT_BRUSH:
+                    Paint.Cap brush = Paint.Cap.valueOf(data.getStringExtra("pickedBrush"));
+                    int size = data.getIntExtra("pickedSize", 20);
+                    myFingerPainterView.setBrush(brush);
+                    myFingerPainterView.setBrushWidth(size);
             }
         }
-    }
-
-    private void selectBrush(){
-        Intent intent = new Intent(this, BrushPicker.class);
-        startActivityForResult(intent, SELECT_COLOUR);
     }
 }

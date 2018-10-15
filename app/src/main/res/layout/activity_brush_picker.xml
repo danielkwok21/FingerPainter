@@ -43,21 +43,72 @@
         android:id="@+id/brush_picker_sizeBar_iv"
         android:layout_width="260dp"
         android:layout_height="41dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:progress="20"
+        app:layout_constraintBottom_toTopOf="@+id/brush_picker_size_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brush_picker_roundBrush_iv" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/brush_picker_size_iv"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="140dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/brush_picker_sizeBar_iv"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/brush_picker_sizeBar_iv"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brush_picker_roundBrush_iv"
-        app:srcCompat="@drawable/brushSize" />
+        app:srcCompat="@drawable/brush_size" />
+
+    <TextView
+        android:id="@+id/brush_picker_size_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="20"
+        android:textColor="@color/black"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/brush_picker_brush_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/brush_picker_size_dec_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/brush_picker_size_tv"
+        app:layout_constraintTop_toTopOf="@+id/brush_picker_size_tv"
+        app:srcCompat="@drawable/chevron_left" />
+
+    <ImageView
+        android:id="@+id/brush_picker_size_inc_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/brush_picker_size_tv"
+        app:layout_constraintTop_toTopOf="@+id/brush_picker_size_tv"
+        app:srcCompat="@drawable/chevron_right" />
+
+    <TextView
+        android:id="@+id/brush_picker_brush_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        android:text="Butt brush"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
