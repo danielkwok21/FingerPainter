@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -56,6 +57,22 @@ public class MainActivity extends AppCompatActivity {
         main_brush_iv.setOnClickListener((v)->
             selectBrush()
         );
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentColour", myFingerPainterView.getColour());
+        outState.putString("currentBrush", myFingerPainterView.getBrush().toString());
+        outState.putInt("currentSize", myFingerPainterView.getBrushWidth());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        myFingerPainterView.setColour(savedInstanceState.getInt("currentColour"));
+        myFingerPainterView.setBrush(Paint.Cap.valueOf(savedInstanceState.getString("currentBrush")));
+        myFingerPainterView.setBrushWidth(savedInstanceState.getInt("currentSize"));
     }
 
     private void chooseImage(){

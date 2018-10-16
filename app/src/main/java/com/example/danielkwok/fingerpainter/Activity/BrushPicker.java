@@ -45,7 +45,7 @@ public class BrushPicker extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        //setting default values
+        //setting default values from mainActivity
         if (intent != null) {
             defaultSize = intent.getIntExtra("defaultSize", 1);
             defaultBrush = intent.getStringExtra("defaultBrush");
