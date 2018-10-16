@@ -33,25 +33,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bundle extras = getIntent().getExtras();
+        myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
+        main_gallery_iv = findViewById(R.id.main_gallery_iv);
+        main_color_iv = findViewById(R.id.main_color_iv);
+        main_brush_iv = findViewById(R.id.main_brush_iv);
 
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             myFingerPainterView.setColour(extras.getInt("colour"));
         }
 
-        myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
+        myFingerPainterView.load(getIntent().getData());
 
-        main_gallery_iv = findViewById(R.id.main_gallery_iv);
         main_gallery_iv.setOnClickListener((v)->{
             chooseImage();
         });
 
-        main_color_iv = findViewById(R.id.main_color_iv);
         main_color_iv.setOnClickListener((v)->
             selectColor()
         );
 
-        main_brush_iv = findViewById(R.id.main_brush_iv);
         main_brush_iv.setOnClickListener((v)->
             selectBrush()
         );
