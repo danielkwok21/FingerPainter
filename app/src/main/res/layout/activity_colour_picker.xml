@@ -40,6 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hex_code_default"
+        android:textSize="20dp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="@+id/colour_picker_displayColour_iv"
         app:layout_constraintEnd_toEndOf="@+id/colour_picker_displayColour_iv"
         app:layout_constraintStart_toStartOf="@+id/colour_picker_displayColour_iv"

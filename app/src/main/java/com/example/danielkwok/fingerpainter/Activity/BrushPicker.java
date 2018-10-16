@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -15,8 +16,11 @@ public class BrushPicker extends AppCompatActivity {
     private static final String TAG = "BrushPicker";
 
     ImageView buttBrush;
+    ImageView buttHighlight;
     ImageView roundBrush;
+    ImageView roundHighlight;
     ImageView squareBrush;
+    ImageView squareHighlight;
     ImageView previewBrushSize;
     SeekBar brushSizeSeekBar;
     TextView brushSizeText;
@@ -51,8 +55,11 @@ public class BrushPicker extends AppCompatActivity {
         currentBrush = defaultBrush;
 
         buttBrush = findViewById(R.id.brush_picker_buttBrush_iv);
+        buttHighlight = findViewById(R.id.brush_picker_butt_highlight_iv);
         roundBrush = findViewById(R.id.brush_picker_roundBrush_iv);
+        roundHighlight = findViewById(R.id.brush_picker_round_highlight_iv);
         squareBrush = findViewById(R.id.brush_picker_squareBrush_iv);
+        squareHighlight = findViewById(R.id.brush_picker_square_highlight_iv);
         previewBrushSize = findViewById(R.id.brush_picker_size_iv);
         brushSizeSeekBar = findViewById(R.id.brush_picker_sizeBar_iv);
         brushSizeText = findViewById(R.id.brush_picker_size_tv);
@@ -72,9 +79,14 @@ public class BrushPicker extends AppCompatActivity {
             setBrush(SQUARE);
         });
 
+        //set default brush
+        setBrush(defaultBrush);
+
+        //preview brush size image
         previewBrushSize.getLayoutParams().height = currentSize;
         previewBrushSize.getLayoutParams().width = currentSize;
 
+        //seekbar
         brushSizeSeekBar.setMax(MAX_SIZE);
         brushSizeSeekBar.setProgress(currentSize);
         brushSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -121,6 +133,19 @@ public class BrushPicker extends AppCompatActivity {
     private void setBrush(String brush){
         currentBrush = brush;
         brushType.setText(currentBrush);
+        if(currentBrush.equals(BUTT)){
+            buttHighlight.setVisibility(View.VISIBLE);
+            roundHighlight.setVisibility(View.INVISIBLE);
+            squareHighlight.setVisibility(View.INVISIBLE);
+        }else if(currentBrush.equals(ROUND)){
+            buttHighlight.setVisibility(View.INVISIBLE);
+            roundHighlight.setVisibility(View.VISIBLE);
+            squareHighlight.setVisibility(View.INVISIBLE);
+        }else if(currentBrush.equals(SQUARE)){
+            buttHighlight.setVisibility(View.INVISIBLE);
+            roundHighlight.setVisibility(View.INVISIBLE);
+            squareHighlight.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setBrushSize(int size){

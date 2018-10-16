@@ -114,6 +114,11 @@ public class ColourPicker extends AppCompatActivity {
         pickedColour.setColorFilter(currentColour);
         String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
         pickedColourHex.setText(colourHex);
+        if(currentColour==Color.BLACK){
+            pickedColourHex.setTextColor(Color.WHITE);
+        }else{
+            pickedColourHex.setTextColor(Color.BLACK);
+        }
     }
 
     public void selectColourFromTile(View v){
