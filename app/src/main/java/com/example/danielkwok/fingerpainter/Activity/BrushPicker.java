@@ -118,6 +118,11 @@ public class BrushPicker extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         currentSize = savedInstanceState.getInt("currentSize");
         currentBrush = savedInstanceState.getString("currentBrush");
+        //set default brush
+        setBrush(currentBrush);
+
+        //preview brush size image
+        setBrushSize(currentSize);
     }
 
     @Override
