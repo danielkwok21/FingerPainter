@@ -95,7 +95,7 @@
         app:layout_constraintBottom_toTopOf="@+id/brush_picker_sizeBar_iv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/divider2"
-        app:srcCompat="@drawable/brush_size" />
+        app:srcCompat="@drawable/brush_size_round" />
 
     <SeekBar
         android:id="@+id/brush_picker_sizeBar_iv"

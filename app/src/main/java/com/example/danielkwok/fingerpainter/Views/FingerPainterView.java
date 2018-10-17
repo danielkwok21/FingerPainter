@@ -50,6 +50,7 @@ public class FingerPainterView extends View {
     }
 
     private void init(Context context) {
+
         this.context = context;
 
         path = new Path();
@@ -145,8 +146,6 @@ public class FingerPainterView extends View {
         canvas.drawBitmap(bitmap, 0, 0, paint);
         // show current drawing path
         canvas.drawPath(path, paint);
-
-
     }
 
     public void setImageBackground(Bitmap bitmap){

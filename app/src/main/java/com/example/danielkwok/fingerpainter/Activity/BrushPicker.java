@@ -15,7 +15,6 @@ public class BrushPicker extends AppCompatActivity {
 
     private static final String TAG = "BrushPicker";
 
-    private static final String BUTT = "BUTT";
     private static final String ROUND = "ROUND";
     private static final String SQUARE = "SQUARE";
     private int defaultSize = 10;
@@ -24,18 +23,15 @@ public class BrushPicker extends AppCompatActivity {
     private int currentSize;
     private String currentBrush;
 
-    ImageView buttBrush;
-    ImageView buttHighlight;
     ImageView roundBrush;
     ImageView roundHighlight;
     ImageView squareBrush;
     ImageView squareHighlight;
-    ImageView previewBrushSize;
+    ImageView previewBrush;
     SeekBar brushSizeSeekBar;
     TextView brushSizeText;
     ImageView increaseBrushSize;
     ImageView decreaseBrushSize;
-    TextView brushType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +49,16 @@ public class BrushPicker extends AppCompatActivity {
         currentSize = defaultSize;
         currentBrush = defaultBrush;
 
-        buttBrush = findViewById(R.id.brush_picker_buttBrush_iv);
-        buttHighlight = findViewById(R.id.brush_picker_butt_highlight_iv);
         roundBrush = findViewById(R.id.brush_picker_roundBrush_iv);
         roundHighlight = findViewById(R.id.brush_picker_round_highlight_iv);
         squareBrush = findViewById(R.id.brush_picker_squareBrush_iv);
         squareHighlight = findViewById(R.id.brush_picker_square_highlight_iv);
-        previewBrushSize = findViewById(R.id.brush_picker_size_iv);
+        previewBrush = findViewById(R.id.brush_picker_size_iv);
         brushSizeSeekBar = findViewById(R.id.brush_picker_sizeBar_iv);
         brushSizeText = findViewById(R.id.brush_picker_size_tv);
         increaseBrushSize = findViewById(R.id.brush_picker_size_dec_iv);
         decreaseBrushSize = findViewById(R.id.brush_picker_size_inc_iv);
-        brushType = findViewById(R.id.brush_picker_brush_tv);
 
-        buttBrush.setOnClickListener((v)->{
-            setBrush(BUTT);
-        });
 
         roundBrush.setOnClickListener((v)->{
             setBrush(ROUND);
@@ -78,14 +68,11 @@ public class BrushPicker extends AppCompatActivity {
             setBrush(SQUARE);
         });
 
-        brushType.setText(defaultBrush);
-
         //set default brush
-        setBrush(defaultBrush);
+        setBrush(currentBrush);
 
         //preview brush size image
-        previewBrushSize.getLayoutParams().height = currentSize;
-        previewBrushSize.getLayoutParams().width = currentSize;
+        setBrushSize(currentSize);
 
         //seekbar
         brushSizeSeekBar.setMax(MAX_SIZE);
@@ -145,17 +132,13 @@ public class BrushPicker extends AppCompatActivity {
 
     private void setBrush(String brush){
         currentBrush = brush;
-        brushType.setText(currentBrush);
-        if(currentBrush.equals(BUTT)){
-            buttHighlight.setVisibility(View.VISIBLE);
-            roundHighlight.setVisibility(View.INVISIBLE);
-            squareHighlight.setVisibility(View.INVISIBLE);
-        }else if(currentBrush.equals(ROUND)){
-            buttHighlight.setVisibility(View.INVISIBLE);
+        if(currentBrush.equals(ROUND)){
+            previewBrush.setImageResource(R.drawable.brush_size_round);
             roundHighlight.setVisibility(View.VISIBLE);
             squareHighlight.setVisibility(View.INVISIBLE);
+
         }else if(currentBrush.equals(SQUARE)){
-            buttHighlight.setVisibility(View.INVISIBLE);
+            previewBrush.setImageResource(R.drawable.brush_size_square);
             roundHighlight.setVisibility(View.INVISIBLE);
             squareHighlight.setVisibility(View.VISIBLE);
         }
@@ -163,20 +146,25 @@ public class BrushPicker extends AppCompatActivity {
 
     private void setBrushSize(int size){
         currentSize = size;
-        previewBrushSize.getLayoutParams().height = currentSize;
-        previewBrushSize.getLayoutParams().width = currentSize;
-        previewBrushSize.requestLayout();
+        previewBrush.getLayoutParams().height = currentSize+1;
+        previewBrush.getLayoutParams().width = currentSize+1;
+        previewBrush.requestLayout();
 
         brushSizeText.setText(Integer.toString(currentSize));
+        brushSizeSeekBar.setProgress(currentSize);
     }
 
     private void increaseBrushSize(){
-        currentSize++;
-        setBrushSize(currentSize);
+        if(currentSize<MAX_SIZE){
+            currentSize++;
+            setBrushSize(currentSize);
+        }
     }
 
     private void decreaseBrushSize(){
-        currentSize--;
-        setBrushSize(currentSize);
+        if(currentSize>0){
+            currentSize--;
+            setBrushSize(currentSize);
+        }
     }
 }

@@ -38,10 +38,11 @@ public class ColourPicker extends AppCompatActivity {
 
         //setting default values
         if (intent != null) {
-            defaultColour = intent.getIntExtra("defaultColour", 1);
+            defaultColour = intent.getIntExtra("defaultColour", R.color.black);
         }
 
         currentColour = defaultColour;
+
 
         pickedColour = findViewById(R.id.colour_picker_displayColour_iv);
         pickedColourHex = findViewById(R.id.colour_picker_hexCode_tv);

@@ -35,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         main_color_iv = findViewById(R.id.main_color_iv);
         main_brush_iv = findViewById(R.id.main_brush_iv);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            myFingerPainterView.setColour(extras.getInt("colour"));
+        Intent intent = getIntent();
+        if(intent!=null){
+            try{
+                myFingerPainterView.load(getIntent().getData());
+            }catch (Exception e){
+                Log.d(TAG, "error: "+e);
+            }
         }
-
-        myFingerPainterView.load(getIntent().getData());
 
         main_gallery_iv.setOnClickListener((v)->{
             chooseImage();
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case SELECT_COLOUR:
-                    int pickedColour = data.getIntExtra("pickedColour", 1);
+                    int pickedColour = data.getIntExtra("pickedColour", R.color.black);
                     myFingerPainterView.setColour(pickedColour);
                     break;
 
