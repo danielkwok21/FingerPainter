@@ -28,25 +28,12 @@
         app:srcCompat="@drawable/brush" />
 
     <ImageView
-        android:id="@+id/main_gallery_iv"
-        android:layout_width="64dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/main_color_iv"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toEndOf="@+id/main_brush_iv" />
-
-    <ImageView
         android:id="@+id/main_color_iv"
         android:clickable="true"
         android:layout_width="57dp"
         android:layout_height="51dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="   16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/color" />

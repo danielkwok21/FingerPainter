@@ -1,10 +1,7 @@
 package com.example.danielkwok.fingerpainter.Activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Paint;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,14 +13,12 @@ import com.example.danielkwok.fingerpainter.Views.FingerPainterView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private static final int SELECT_PIC = 1;
-    private static final int SELECT_COLOUR = 2;
-    private static final int SELECT_BRUSH = 3;
+    private static final int SELECT_COLOUR = 1;
+    private static final int SELECT_BRUSH = 2;
 
     private FingerPainterView myFingerPainterView;
-    private ImageView main_gallery_iv;
-    private ImageView main_color_iv;
-    private ImageView main_brush_iv;
+    ImageView main_color_iv;
+    ImageView main_brush_iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myFingerPainterView = findViewById(R.id.myFingerPainterViewId);
-        main_gallery_iv = findViewById(R.id.main_gallery_iv);
         main_color_iv = findViewById(R.id.main_color_iv);
         main_brush_iv = findViewById(R.id.main_brush_iv);
 
+        //load image onto background if open from external app
         Intent intent = getIntent();
         if(intent!=null){
             try{
@@ -43,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "error: "+e);
             }
         }
-
-        main_gallery_iv.setOnClickListener((v)->{
-            chooseImage();
-        });
 
         main_color_iv.setOnClickListener((v)->
             selectColor()
@@ -73,11 +64,6 @@ public class MainActivity extends AppCompatActivity {
         myFingerPainterView.setBrushWidth(savedInstanceState.getInt("currentSize"));
     }
 
-    private void chooseImage(){
-        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, SELECT_PIC);
-    }
-
     private void selectColor(){
         Intent intent = new Intent(this, ColourPicker.class);
         intent.putExtra("defaultColour", myFingerPainterView.getColour());
@@ -96,16 +82,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(data!=null){
             switch(requestCode){
-                case SELECT_PIC:
-                    Uri uri = data.getData();
-                    try{
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                        myFingerPainterView.setImageBackground(bitmap);
-                    }catch(Exception e){
-                        Log.d(TAG, "URI not available");
-                    }
-
-                    break;
                 case SELECT_COLOUR:
                     int pickedColour = data.getIntExtra("pickedColour", R.color.black);
                     myFingerPainterView.setColour(pickedColour);

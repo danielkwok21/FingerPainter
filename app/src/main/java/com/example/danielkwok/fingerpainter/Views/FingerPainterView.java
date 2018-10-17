@@ -22,6 +22,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
+/*
+ *
+ * Derived from android graphics API sample com.example.android.apis.graphics.Fingerpaint
+ * android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/graphics/FingerPaint.java
+ *
+ */
 
 public class FingerPainterView extends View {
 
@@ -31,7 +37,6 @@ public class FingerPainterView extends View {
     private Bitmap bitmap;
     private Path path;
     private Uri uri;
-    private Bitmap imageBitmap;
 
     public FingerPainterView(Context context) {
         super(context); // application context
@@ -45,12 +50,10 @@ public class FingerPainterView extends View {
 
     public FingerPainterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setBackgroundColor(Color.parseColor("#FFFF00"));
         init(context);
     }
 
     private void init(Context context) {
-
         this.context = context;
 
         path = new Path();
@@ -136,20 +139,11 @@ public class FingerPainterView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
-        if(imageBitmap!=null){
-            canvas.drawBitmap(imageBitmap, 0,0, null);
-        }else{
-            // canvas is white with a bitmap with alpha channel drawn over the top
-            canvas.drawColor(Color.WHITE);
-        }
+        // canvas is white with a bitmap with alpha channel drawn over the top
+        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(bitmap, 0, 0, paint);
         // show current drawing path
         canvas.drawPath(path, paint);
-    }
-
-    public void setImageBackground(Bitmap bitmap){
-        this.imageBitmap = bitmap;
     }
 
     @Override
