@@ -3,10 +3,7 @@ package com.example.danielkwok.fingerpainter.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import com.example.danielkwok.fingerpainter.R;
-import com.example.danielkwok.fingerpainter.Utils.Utils;
 import com.example.danielkwok.fingerpainter.Views.FingerPainterView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int SELECT_PIC = 1;
     private static final int SELECT_COLOUR = 2;
     private static final int SELECT_BRUSH = 3;
-    private FingerPainterView myFingerPainterView;
 
+    private FingerPainterView myFingerPainterView;
     private ImageView main_gallery_iv;
     private ImageView main_color_iv;
     private ImageView main_brush_iv;

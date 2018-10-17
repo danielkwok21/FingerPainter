@@ -15,6 +15,15 @@ public class BrushPicker extends AppCompatActivity {
 
     private static final String TAG = "BrushPicker";
 
+    private static final String BUTT = "BUTT";
+    private static final String ROUND = "ROUND";
+    private static final String SQUARE = "SQUARE";
+    private int defaultSize = 10;
+    private String defaultBrush = ROUND;
+    private final int MAX_SIZE = 200;
+    private int currentSize;
+    private String currentBrush;
+
     ImageView buttBrush;
     ImageView buttHighlight;
     ImageView roundBrush;
@@ -27,16 +36,6 @@ public class BrushPicker extends AppCompatActivity {
     ImageView increaseBrushSize;
     ImageView decreaseBrushSize;
     TextView brushType;
-
-    private static final String BUTT = "BUTT";
-    private static final String ROUND = "ROUND";
-    private static final String SQUARE = "SQUARE";
-    private int defaultSize = 10;
-    private String defaultBrush = ROUND;
-    private final int MAX_SIZE = 200;
-    private int currentSize;
-    private String currentBrush;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +78,8 @@ public class BrushPicker extends AppCompatActivity {
             setBrush(SQUARE);
         });
 
+        brushType.setText(defaultBrush);
+
         //set default brush
         setBrush(defaultBrush);
 
@@ -116,8 +117,20 @@ public class BrushPicker extends AppCompatActivity {
         increaseBrushSize.setOnClickListener((v)->{
             decreaseBrushSize();
         });
+    }
 
-        brushType.setText(defaultBrush.toString());
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentSize", currentSize);
+        outState.putString("currentBrush", currentBrush);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentSize = savedInstanceState.getInt("currentSize");
+        currentBrush = savedInstanceState.getString("currentBrush");
     }
 
     @Override
@@ -165,19 +178,5 @@ public class BrushPicker extends AppCompatActivity {
     private void decreaseBrushSize(){
         currentSize--;
         setBrushSize(currentSize);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("currentSize", currentSize);
-        outState.putString("currentBrush", currentBrush);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        currentSize = savedInstanceState.getInt("currentSize");
-        currentBrush = savedInstanceState.getString("currentBrush");
     }
 }

@@ -19,14 +19,14 @@ import java.util.ArrayList;
 public class ColourPicker extends AppCompatActivity {
     private static final String TAG = "ColourPicker";
 
-    ColorPickerView colourWheel;
-    ImageView pickedColour;
-    TextView pickedColourHex;
-
     private int defaultColour = Color.BLACK;
     private int currentColour;
     private ArrayList<Integer> pickedColours = new ArrayList<>();
     private ArrayList<Integer> tileIds = new ArrayList<>();
+
+    ColorPickerView colourWheel;
+    ImageView pickedColour;
+    TextView pickedColourHex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,26 +47,34 @@ public class ColourPicker extends AppCompatActivity {
         pickedColourHex = findViewById(R.id.colour_picker_hexCode_tv);
         colourWheel = findViewById(R.id.colorPickerView);
 
-        prepareTileArrays();
-        setTileColours();
+        setTiles();
         setColourPreview();
 
         colourWheel.setColorListener(selectColourFromWheel());
     }
 
-    private ColorListener selectColourFromWheel(){
-        return new ColorListener() {
-            @Override
-            public void onColorSelected(int color, boolean fromUser) {
-                if(fromUser){
-                    currentColour = color;
-                    setColourPreview();
-                }
-            }
-        };
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentColour", currentColour);
     }
 
-    private void prepareTileArrays(){
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentColour = savedInstanceState.getInt("currentColour");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent();
+        intent.putExtra("pickedColour", currentColour);
+        setResult(1, intent);
+        finish();
+        return true;
+    }
+
+    private void setTiles(){
         pickedColours.add(getResources().getColor(R.color.black));
         pickedColours.add(getResources().getColor(R.color.grey));
         pickedColours.add(getResources().getColor(R.color.white));
@@ -92,33 +100,23 @@ public class ColourPicker extends AppCompatActivity {
         tileIds.add(R.id.colour_picker_color10_iv);
         tileIds.add(R.id.colour_picker_color11_iv);
         tileIds.add(R.id.colour_picker_color12_iv);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent();
-        intent.putExtra("pickedColour", currentColour);
-        setResult(1, intent);
-        finish();
-        return true;
-    }
-
-    private void setTileColours(){
         for(int i=0; i<pickedColours.size(); i++){
             ImageView tile = findViewById(tileIds.get(i));
             tile.setColorFilter(pickedColours.get(i));
         }
     }
 
-    private void setColourPreview(){
-        pickedColour.setColorFilter(currentColour);
-        String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
-        pickedColourHex.setText(colourHex);
-        if(currentColour==Color.BLACK){
-            pickedColourHex.setTextColor(Color.WHITE);
-        }else{
-            pickedColourHex.setTextColor(Color.BLACK);
-        }
+    private ColorListener selectColourFromWheel(){
+        return new ColorListener() {
+            @Override
+            public void onColorSelected(int color, boolean fromUser) {
+                if(fromUser){
+                    currentColour = color;
+                    setColourPreview();
+                }
+            }
+        };
     }
 
     public void selectColourFromTile(View v){
@@ -131,15 +129,15 @@ public class ColourPicker extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("currentColour", currentColour);
-    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        currentColour = savedInstanceState.getInt("currentColour");
+    private void setColourPreview(){
+        pickedColour.setColorFilter(currentColour);
+        String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
+        pickedColourHex.setText(colourHex);
+        if(currentColour==Color.BLACK){
+            pickedColourHex.setTextColor(Color.WHITE);
+        }else{
+            pickedColourHex.setTextColor(Color.BLACK);
+        }
     }
 }
