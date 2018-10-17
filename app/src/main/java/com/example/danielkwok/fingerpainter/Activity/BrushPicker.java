@@ -41,6 +41,7 @@ public class BrushPicker extends AppCompatActivity {
         Intent intent = getIntent();
 
         //setting default values from mainActivity
+        //depends on value from FingerPainterView. ie if default value from there changes, so does it here
         if (intent != null) {
             defaultSize = intent.getIntExtra("defaultSize", 1);
             defaultBrush = intent.getStringExtra("defaultBrush");
@@ -59,7 +60,6 @@ public class BrushPicker extends AppCompatActivity {
         increaseBrushSize = findViewById(R.id.brush_picker_size_dec_iv);
         decreaseBrushSize = findViewById(R.id.brush_picker_size_inc_iv);
 
-
         roundBrush.setOnClickListener((v)->{
             setBrush(ROUND);
         });
@@ -68,10 +68,7 @@ public class BrushPicker extends AppCompatActivity {
             setBrush(SQUARE);
         });
 
-        //set default brush
         setBrush(currentBrush);
-
-        //preview brush size image
         setBrushSize(currentSize);
 
         //seekbar
@@ -135,6 +132,7 @@ public class BrushPicker extends AppCompatActivity {
         return true;
     }
 
+    //sets brush based on user selection
     private void setBrush(String brush){
         currentBrush = brush;
         if(currentBrush.equals(ROUND)){
@@ -149,6 +147,9 @@ public class BrushPicker extends AppCompatActivity {
         }
     }
 
+    //sets brush size based on user selection
+    //+1 is added because an image size of 0 means its default size.
+    //hence for previewBrush, the smallest size is actually 1, instead of the UI displayed 0
     private void setBrushSize(int size){
         currentSize = size;
         previewBrush.getLayoutParams().height = currentSize+1;

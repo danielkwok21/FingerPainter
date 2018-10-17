@@ -21,9 +21,11 @@ public class ColourPicker extends AppCompatActivity {
 
     private int defaultColour = Color.BLACK;
     private int currentColour;
-    private ArrayList<Integer> pickedColours = new ArrayList<>();
+    private ArrayList<Integer> tileColours = new ArrayList<>();
     private ArrayList<Integer> tileIds = new ArrayList<>();
 
+    //ColorPickerView is a library from https://github.com/skydoves/ColorPickerPreference by skydoves
+    //allows for implementation of colour wheel
     ColorPickerView colourWheel;
     ImageView pickedColour;
     TextView pickedColourHex;
@@ -37,6 +39,7 @@ public class ColourPicker extends AppCompatActivity {
         Intent intent = getIntent();
 
         //setting default values
+        //depends on value from FingerPainterView. ie if default value from there changes, so does it here
         if (intent != null) {
             defaultColour = intent.getIntExtra("defaultColour", R.color.black);
             currentColour = defaultColour;
@@ -75,19 +78,21 @@ public class ColourPicker extends AppCompatActivity {
         return true;
     }
 
+    //prepare array of tileColours & tileIds
+    //iterates through array to assign each tile a colour
     private void setTiles(){
-        pickedColours.add(getResources().getColor(R.color.black));
-        pickedColours.add(getResources().getColor(R.color.grey));
-        pickedColours.add(getResources().getColor(R.color.white));
-        pickedColours.add(getResources().getColor(R.color.red));
-        pickedColours.add(getResources().getColor(R.color.orange));
-        pickedColours.add(getResources().getColor(R.color.yellow));
-        pickedColours.add(getResources().getColor(R.color.green));
-        pickedColours.add(getResources().getColor(R.color.blue));
-        pickedColours.add(getResources().getColor(R.color.darkblue));
-        pickedColours.add(getResources().getColor(R.color.purple));
-        pickedColours.add(getResources().getColor(R.color.pink));
-        pickedColours.add(getResources().getColor(R.color.brown));
+        tileColours.add(getResources().getColor(R.color.black));
+        tileColours.add(getResources().getColor(R.color.grey));
+        tileColours.add(getResources().getColor(R.color.white));
+        tileColours.add(getResources().getColor(R.color.red));
+        tileColours.add(getResources().getColor(R.color.orange));
+        tileColours.add(getResources().getColor(R.color.yellow));
+        tileColours.add(getResources().getColor(R.color.green));
+        tileColours.add(getResources().getColor(R.color.blue));
+        tileColours.add(getResources().getColor(R.color.darkblue));
+        tileColours.add(getResources().getColor(R.color.purple));
+        tileColours.add(getResources().getColor(R.color.pink));
+        tileColours.add(getResources().getColor(R.color.brown));
 
         tileIds.add(R.id.colour_picker_color1_iv);
         tileIds.add(R.id.colour_picker_color2_iv);
@@ -102,12 +107,13 @@ public class ColourPicker extends AppCompatActivity {
         tileIds.add(R.id.colour_picker_color11_iv);
         tileIds.add(R.id.colour_picker_color12_iv);
 
-        for(int i=0; i<pickedColours.size(); i++){
+        for(int i = 0; i< tileColours.size(); i++){
             ImageView tile = findViewById(tileIds.get(i));
-            tile.setColorFilter(pickedColours.get(i));
+            tile.setColorFilter(tileColours.get(i));
         }
     }
 
+    //if user selects a colour from colourWheel
     private ColorListener selectColourFromWheel(){
         return new ColorListener() {
             @Override
@@ -120,17 +126,18 @@ public class ColourPicker extends AppCompatActivity {
         };
     }
 
+    //if user selects a colour from tile
     public void selectColourFromTile(View v){
         try{
             int index = tileIds.indexOf(v.getId());
-            currentColour = pickedColours.get(index);
+            currentColour = tileColours.get(index);
             setColourPreview();
         }catch(Exception e){
             Log.d(TAG, "error: "+e);
         }
     }
 
-
+    //updates the preview based on colour selected
     private void setColourPreview(){
         pickedColour.setColorFilter(currentColour);
         String colourHex = getString(R.string.hex_colour, Integer.toHexString(currentColour));
